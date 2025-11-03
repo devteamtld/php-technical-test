@@ -1,21 +1,85 @@
-# Php Technical test
+# TLD Interview Test
+## Introduction
 
+You have 2 hours to create a small php Symfony or Laravel app parsing data from the GitHub API.
+You're free to use any solution to run & serve the app (the Symfony/Laravel PHP web server, Docker + nginx/apache, ...).
 
+### Example public repository
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+You can test your implementation using a valid public GitHub repository such as:
+```bash
+facebook/react
 ```
-cd existing_repo
-git remote add origin http://gitlab.alvest.fr/anthony.fachaux/php-technical-test.git
+
+Other examples:
+```bash
+symfony/symfony
+laravel/laravel
+```
+
+
+You should be able to fetch commits from these without authentication (rate limits may apply).
+
+### Example request (curl)
+
+After running your application locally, you should be able to perform a request such as:
+```bash
+curl "http://localhost:8000/facebook/react?since=2024-01-01&until=2024-02-01"
+```
+
+Or, if you expose the server on another port:
+```bash
+curl "http://localhost:8080/facebook/react?since=2024-01-01&until=2024-02-01"
+```
+
+The response should be JSON grouped by calendar week.
+
+## 🚀 Goals
+
+Create a new Symfony or Laravel application.
+
+Using this documentation: https://docs.github.com/en/rest/commits/commits
+, retrieve commits made on the main/master branch between two dates from the GitHub API on a given repository.
+
+Create a controller action matching this pattern /{user}/{repository} which processes the data from the GitHub API to count and list commits for each calendar week.
+
+Two optional query parameters should be accepted and processed by this route: since and until. Their default values should be 4 weeks ago and today.
+
+The response must be valid JSON. Here is an example structure:
+```jsonc
+[
+{
+    "week": 24,
+    "count": 10,
+    "commits": [
+    // add here the 10 commit objects retrieved from GitHub for week 24
+    ]
+},
+{
+    "week": 25,
+    "count": 9,
+    "commits": [
+    // add here the 9 commit objects retrieved from GitHub
+    ]
+}
+]
+```
+
+Write functional and/or unit tests.
+
+## Instructions
+
+You can use Guzzle, Symfony HttpClient, Laravel HTTP Client, or any third-party library you might know to perform HTTP requests to GitHub.
+
+Build your code so that it is easily testable (for example by decoupling the logical part querying GitHub from the controller code).
+
+Your code must be versioned using git: provide a zip archive containing the .git folder or give the URL of a GitHub repository.
+
+You're free to use any Symfony version or any recent Laravel version.
+
+If you don't have enough time to do every required task, document what you would have done to complete the missing parts.
+
+If you want, I can add optional stretch goals (rate-limit handling, pagination, grouping by day, caching, etc.) in an extra section as well.git
 git branch -M main
 git push -uf origin main
 ```
