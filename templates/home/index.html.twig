@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Technical Test{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">TLD PHP Technical Test</h1>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="h5 card-title">Part A — Project tracker</h2>
+                    <p class="card-text">A small Symfony CRUD app. See <code>PART_A.md</code> at the root of the repository for the spec.</p>
+                    <a href="/projects" class="btn btn-primary">Open the project list</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="h5 card-title">Part B — GitHub commits</h2>
+                    <p class="card-text">Show commit activity for a project's linked GitHub repository. Builds on Part A. See <code>PART_B.md</code> at the root of the repository for the spec.</p>
+                    <p class="text-muted small mb-0">Example once built: open a project, then view its commits.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
