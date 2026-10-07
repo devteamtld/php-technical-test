@@ -1,9 +1,11 @@
-# Part A — Project tracker (1 hour, no AI)
+# Part A — Project tracker (1 hour, AI allowed)
 
 ## Rules
 
 - **1 hour.**
-- **No AI assistant** (no Copilot, ChatGPT, Claude, etc.) — this part is meant to show your own Symfony/PHP fluency.
+- **Use any AI assistant you're comfortable with** (Copilot, ChatGPT, Claude, Cursor, whatever's part of your normal workflow).
+- **Export or copy your AI conversation(s)** and include them in your submission (e.g. as `AI_CHAT_LOG.md`, or an exported transcript file from your tool). We're interested in how you drove the tool, not just whether the pages work.
+- **Part B is done without AI and builds directly on this code** — make sure you understand and can defend everything that ends up in this part.
 - If you run out of time, stop and write a short note in your submission about what's missing and how you would have finished it.
 
 ## What's already there
@@ -22,7 +24,7 @@ A small tracker for software projects your team owns, under `/projects`:
    - `repository` (string, required — the project's GitHub repo, in `owner/repo` format, e.g. `facebook/react`). It's not used anywhere in this part; it's there for Part B.
 2. Run `php bin/console doctrine:schema:update --force` to create the `project` table from your entity — the `category` table is already there, you're adding your own on top of it.
 3. A `ProjectType` form for creating/editing a project.
-4. A `ProjectController` with the standard CRUD routes:
+4. **One controller per route** (single-action controllers using `__invoke`), for the standard CRUD routes:
    - `GET /projects` — list
    - `GET /projects/{id}` — show
    - `GET|POST /projects/new` — create
@@ -34,7 +36,7 @@ A small tracker for software projects your team owns, under `/projects`:
 
 ## What we're looking at
 
-Correct use of Doctrine (entity, relation), Symfony forms and validation, clean and thin controllers, template reuse, and whether the code reads like something we'd be comfortable merging.
+Correct use of Doctrine (entity, relation), Symfony forms and validation, clean and thin controllers, template reuse, and whether the code reads like something we'd be comfortable merging — regardless of who (or what) typed it. We'll also look at your chat log: how you prompted, and what you checked, corrected or rejected from the AI's output.
 
 ## Submitting
 
